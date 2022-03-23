@@ -1,26 +1,28 @@
+import { useState } from "react";
 import ExpenseItem from "./components/ExpenseItem";
 import NewExpense from "./components/NewExpense";
 
 const App = () => {
-  const expenses = [
-    {
-      id: "1",
-      title: "Buy chairs",
-      amount: 1500.0,
-    },
-    {
-      id: "2",
-      title: "Construct pavement",
-      amount: 5400.0,
-    },
-  ];
+  const [expenses, setExpenses] = useState([]);
+
+  const addExpenseHandler = (item) => {
+    setExpenses([...expenses, item]);
+  };
 
   return (
-    <div>
-      <h2>Let's get started!</h2>
-      <NewExpense />
-      <ExpenseItem title={expenses[0].title} amount={expenses[0].amount} />
-      <ExpenseItem title={expenses[1].title} amount={expenses[1].amount} />
+    <div className="app">
+      <h2>Expense-App</h2>
+      <NewExpense addExpense={addExpenseHandler} />
+      {expenses.map((expense) => {
+        return (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        );
+      })}
     </div>
   );
 };
