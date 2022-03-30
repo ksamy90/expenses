@@ -14,6 +14,21 @@ const App = () => {
     setExpenses(expenses.filter((expense) => expense.id !== id));
   };
 
+  const updateItem = (id, updateExpense) => {
+    const todoExpense = expenses.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          title: updateExpense.title,
+          date: updateExpense.date,
+          amount: updateExpense.amount,
+        };
+      }
+      return item;
+    });
+    setExpenses([...todoExpense]);
+  };
+
   useEffect(() => {
     const dataItems = JSON.stringify(expenses);
     localStorage.setItem("items", dataItems);
@@ -32,6 +47,7 @@ const App = () => {
             amount={expense.amount}
             date={expense.date}
             removeData={removeItem}
+            updateData={updateItem}
           />
         );
       })}

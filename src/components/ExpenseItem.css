@@ -1,6 +1,6 @@
 .btn-expense {
-  margin-left: 3rem;
-  margin-right: 7rem;
+  margin-left: 2rem;
+  margin-right: 3rem;
   border-end-start-radius: 10px;
   border: none;
   padding: 7px;
@@ -13,6 +13,7 @@
 .date {
   margin-right: 2rem;
   margin-left: 4rem;
+  color: white;
 }
 
 .expense-item {
