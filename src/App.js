@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ExpenseItem from "./components/ExpenseItem";
 import NewExpense from "./components/NewExpense";
 
 const App = () => {
-  const [expenses, setExpenses] = useState([]);
+  const myItems = JSON.parse(localStorage.getItem("items"));
+  const [expenses, setExpenses] = useState(myItems || []);
 
   const addExpenseHandler = (item) => {
     setExpenses([...expenses, item]);
   };
+
+  const removeItem = (id) => {
+    setExpenses(expenses.filter((expense) => expense.id !== id));
+  };
+
+  useEffect(() => {
+    const dataItems = JSON.stringify(expenses);
+    localStorage.setItem("items", dataItems);
+  }, [expenses]);
 
   return (
     <div className="app">
@@ -17,9 +27,11 @@ const App = () => {
         return (
           <ExpenseItem
             key={expense.id}
+            id={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
+            removeData={removeItem}
           />
         );
       })}
