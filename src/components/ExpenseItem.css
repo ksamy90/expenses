@@ -10,6 +10,22 @@
   box-shadow: 2px 3px 8px rgba(197, 67, 67, 0.25);
 }
 
+.edit-form {
+  margin: 0 auto;
+  z-index: 10;
+  background-color: grey;
+  padding: 2rem;
+}
+
+.edit-form form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-form input {
+  padding: 10px;
+}
+
 .date {
   margin-right: 2rem;
   margin-left: 4rem;

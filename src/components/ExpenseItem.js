@@ -38,7 +38,7 @@ function ExpenseItem(props) {
 
   if (editing) {
     result = (
-      <div>
+      <div className="edit-form">
         <form onSubmit={handleSubmit}>
           <div>
             <input type="text" value={title} onChange={titleChange} />
